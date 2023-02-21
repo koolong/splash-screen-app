@@ -1,1 +1,94 @@
 
+# This is a basic workflow to help you get started with Actions
+
+name: Build Android
+
+on: [workflow_dispatch]
+
+env:
+  APP_NAME: Splash Screen App
+
+jobs:
+  build:
+    name: 🚀 Build APK
+    runs-on: ubuntu-latest
+    environment: 
+      name: DEV
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+
+      - name: Install Cordova
+        run: npm install -g cordova
+
+      - name: Install Ionic
+        run: npm install -g @ionic/cli
+
+      - name: Install app dependencies
+        run: npm install
+
+      - name: Add Android platform
+        run: cordova platform add android@latest
+
+      - name: Add Cordova Plugins
+        run: |
+          cordova plugin add cordova-plugin-splashscreen
+          cordova plugin add cordova-plugin-device
+          cordova plugin add cordova-plugin-statusbar
+          cordova plugin add cordova-plugin-dialogs
+          cordova plugin add cordova-plugin-file
+          cordova plugin add cordova-plugin-splashscreen
+
+      - name: Prepare Buildd
+        run: cordova prepare
+
+      - name: Build Android Dev APK
+        run: cordova build android --debug
+
+      - name: Generate the Android App Bundle
+        working-directory: ./platforms/android/
+        run: ./gradlew bundle
+
+      - name: Upload dev APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-dev
+          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
+  
+  
+  deploy:
+    name: 🎉 Deploy App
+    needs: build
+    runs-on: ubuntu-latest
+    environment: 
+      name: DEV
+    steps:
+    
+      - name: Retrieve Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: app-dev
+
+      - name: Read folders
+        run: ls -R
+          
+      - name: Create folder
+        run: |
+          mkdir -p app
+          cp -R app-debug.apk app/app-debug.apk
+
+      - name: Create folder
+        run: cp -R app/app-debug.apk app/app-debug-$(date +%Y%m%d-%H%M).apk
+
+
+          
