@@ -12,8 +12,6 @@ jobs:
   build:
     name: 🚀 Build APK
     runs-on: ubuntu-latest
-    environment: 
-      name: DEV
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
@@ -70,8 +68,6 @@ jobs:
     name: 🎉 Deploy App
     needs: build
     runs-on: ubuntu-latest
-    environment: 
-      name: DEV
     steps:
     
       - name: Retrieve Artifact
