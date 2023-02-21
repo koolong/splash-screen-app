@@ -15,19 +15,18 @@
       <preference name="StatusBarOverlaysWebView" value="false" />
       <preference name="android-minSdkVersion" value="22" />
       <framework src="com.android.support:support-v4:+" />
-      <resource-file src="google-services.json" target="/app/google-services.json" />
       <icon density="ldpi" src="res/icon/android/mipmap-ldpi/ic_launcher.png" />
       <icon density="mdpi" src="res/icon/android/mipmap-mdpi/ic_launcher.png" />
       <icon density="hdpi" src="res/icon/android/mipmap-hdpi/ic_launcher.png" />
       <icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/ic_launcher.png" />
       <icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/ic_launcher.png" />
       <icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/ic_launcher.png" />
-      <splash density="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
+      <!--<splash density="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
       <splash density="port-ldpi" src="res/screen/android/drawable-port-ldpi-screen.png" />
       <splash density="port-mdpi" src="res/screen/android/drawable-port-mdpi-screen.png" />
       <splash density="port-xhdpi" src="res/screen/android/drawable-port-xhdpi-screen.png" />
       <splash density="port-xxhdpi" src="res/screen/android/drawable-port-xxhdpi-screen.png" />
-      <splash density="port-xxxhdpi" src="res/screen/android/drawable-port-xxxhdpi-screen.png" />
+      <splash density="port-xxxhdpi" src="res/screen/android/drawable-port-xxxhdpi-screen.png" />-->
     </platform>
 
     <preference name="DisallowOverscroll" value="true" />
@@ -38,4 +37,5 @@
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="SplashScreenDelay" value="10000" />
+	<preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/splashscreen.xml" />
 </widget>
