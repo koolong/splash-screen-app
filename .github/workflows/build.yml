@@ -40,12 +40,12 @@ jobs:
 
       - name: Add Cordova Plugins
         run: |
-          cordova plugin add cordova-plugin-splashscreen
+          #cordova plugin add cordova-plugin-splashscreen
           cordova plugin add cordova-plugin-device
           cordova plugin add cordova-plugin-statusbar
           cordova plugin add cordova-plugin-dialogs
           cordova plugin add cordova-plugin-file
-          cordova plugin add cordova-plugin-splashscreen
+          #cordova plugin add cordova-plugin-splashscreen
 
       - name: Prepare Buildd
         run: cordova prepare
